@@ -1,0 +1,66 @@
+{
+	"appBundleID": "com.interactiveinception.slimimage",
+	"devMode": false,
+	"gifs": [
+		"./resources/gifs/waffer-smash.gif",
+		"./resources/gifs/cake-smash-2.gif",
+		"./resources/gifs/cake-smash.gif",
+		"./resources/gifs/icecream-smash.gif",
+		"./resources/gifs/biscuit-smash.gif",
+		"./resources/gifs/jelly-smash.gif",
+		"./resources/gifs/tv-smash-2.gif",
+		"./resources/gifs/arrested-smash.gif",
+		"./resources/gifs/keyboard-smash.gif",
+		"./resources/gifs/pc-smash-2.gif",
+		"./resources/gifs/pc-smash.gif",
+		"./resources/gifs/hulk-smash.gif",
+		"./resources/gifs/ron-smash.gif",
+		"./resources/gifs/tv-smash.gif"
+	],
+	"icons": {
+		"super": "./resources/images/saving-super.svg",
+		"good": "./resources/images/saving-good.svg",
+		"bad": "./resources/images/saving-bad.svg",
+		"none": "./resources/images/saving-none.svg"
+	},
+	"messages": {
+		"super": {
+			"title": "Your images are now [DIFFERENCE]% smaller!",
+			"subtitle": "Sleep sound tonight in the knowledge you've saved some serious load time."
+		},
+		"good": {
+			"title": "Your images are now [DIFFERENCE]% smaller!",
+			"subtitle": "That's not a bad little saving."
+		},
+		"bad": {
+			"title": "Your images are now [DIFFERENCE]% smaller!",
+			"subtitle": "Not that impressive but your images were already fairly slim."
+		},
+		"none": {
+			"title": "Can't save anything here",
+			"subtitle": "This normally means that the image is already fairly well compressed."
+		}
+	},
+	"strings": {
+		"appName": "Slim Image",
+		"mainView": {
+			"title": "Drop Image Files Here",
+			"subtitle": "We compress JPGs, PNGs, GIFs and SVGs",
+			"selectButton": "Select Images"
+		},
+		"compressingView": {
+			"title": "Slimming Your Images",
+			"subtitle": "This could take a while depending on the number and size of your images."
+		},
+		"finishedView": {
+			"saveAllButton": "Save All Images",
+			"viewAllButton": "View All Images",
+			"startAgain": "Start Again"
+		},
+		"aboutView": {
+			"title": "Slim Image",
+			"description": "Trimming the fat from your images.",
+			"author": "Created By <br>Interactive Inception"
+		}
+	}
+}

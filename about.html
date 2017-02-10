@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="app.css">
+    	<script>
+    		var config = require('./config.json');
+    	</script>
+	</head>
+	<body class="ui-about-window">
+
+		<div class="ui-app-name">
+		    <script>document.write(config.strings.aboutView.title);</script>
+		</div><!-- .ui-app-name -->
+
+        <div class="ui-app-description">
+            <script>document.write(config.strings.aboutView.description);</script>
+		</div><!-- .ui-app-description -->
+
+        <div class="ui-app-author">
+            <script>document.write(config.strings.aboutView.author);</script>
+		</div><!-- .ui-app-author -->
+
+	</body>
+</html>

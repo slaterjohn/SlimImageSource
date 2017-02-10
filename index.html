@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="app.css">
+	</head>
+
+	<script>
+		var config = require('./config.json');
+	</script>
+
+	<body class="ui-main-window">
+
+		<div class="ui-titlebar">
+			<div class="ui-titlebar__title"><script>document.write(config.strings.appName);</script></div>
+		</div><!-- .ui-titlebar -->
+
+		<div id="dropTarget" class="ui-drop-zone">
+
+			<div class="ui-view ui-welcome-view pu-hide">
+				<div class="ui-welcome-view__icon"><img src="./resources/images/target.svg"></div>
+				<div class="ui-welcome-view__message">
+
+					<div class="ui-welcome-view__title">
+						<script>document.write(config.strings.mainView.title);</script>
+					</div><!-- ui-welcome-view__title -->
+
+					<div class="ui-welcome-view__subtitle">
+						<script>document.write(config.strings.mainView.subtitle);</script>
+					</div><!-- ui-welcome-view__subtitle -->
+
+				</div><!-- .ui-welcome-view__message -->
+				<div class="ui-welcome-view__actions">
+					<form class="images_form"><input type="file" name="upload_field" id="upload_field" multiple></form>
+					<label for="upload_field" class="ui-button ui-button--small"><script>document.write(config.strings.mainView.selectButton);</script></label>
+				</div>
+			</div><!-- .ui-welcome-view -->
+
+
+			<div class="ui-view ui-compressing-view u-hide">
+				<div class="ui-compressing-view__image"><img src="./resources/gifs/tv-smash.gif" class="ui-compressing-view__gif"></div>
+				<div class="ui-compressing-view__message">
+
+					<div class="ui-compressing-view__title">
+						<script>document.write(config.strings.compressingView.title);</script>
+					</div><!-- ui-compressing-view__title -->
+
+					<div class="ui-compressing-view__subtitle">
+						<script>document.write(config.strings.compressingView.subtitle);</script>
+					</div><!-- ui-compressing-view__subtitle -->
+
+				</div><!-- .ui-compressing-view__message -->
+			</div><!-- .ui-compressing-view -->
+
+
+			<div class="ui-view ui-finished-view u-hide">
+				<div class="ui-finished-view__icon"><img src="" class="js-total-saved-icon"></div>
+				<div class="ui-finished-view__message">
+					<div class="ui-finished-view__title js-total-saved-title"></div>
+					<div class="ui-finished-view__subtitle js-total-saved-subtitle"></div>
+				</div><!-- .ui-finished-view__message -->
+				<div class="ui-finished-view__actions">
+
+					<a href="#" class="ui-button ui-button--small js-save-all">
+						<script>document.write(config.strings.finishedView.saveAllButton);</script>
+					</a>
+
+					<a href="#" class="ui-button ui-button--small u-hide js-view-images">
+						<script>document.write(config.strings.finishedView.viewAllButton);</script>
+					</a>
+
+					<div><a href="#" class="ui-start-over js-start-over">
+						<script>document.write(config.strings.finishedView.startAgain);</script>
+					</a></div>
+
+				</div>
+			</div><!-- .ui-finished-view -->
+
+		</div><!-- drop-zone -->
+
+	</body>
+
+	<script>
+		window.node = window.require;
+		// You can also require other files to run in this process
+		require('./renderer.js');
+		require('./index.js');
+	</script>
+
+</html>
