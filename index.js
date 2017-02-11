@@ -8,24 +8,21 @@
     var fs = node('fs-extra');
     var imagemin = node('imagemin');
 	var imageminJpegtran = require('imagemin-jpegtran');
-	var imageminJpegoptim = require('imagemin-jpegoptim');
+	//var imageminJpegoptim = require('imagemin-jpegoptim');
 	var imageminPngquant = node('imagemin-pngquant');
 	var imageminGifsicle = node('imagemin-gifsicle');
 	var imageminSvgo = require('imagemin-svgo');
-    var assign = node('object-assign');
     var path = node('path');
     var dropped = node('drag-drop');
     var each = node('each-async');
     var jszip = require("jszip");
-    var FileSaver = require('file-saver');
-    var toBlob = require('stream-to-blob');
     var moment = require('moment');
 
 	var config = require('./config.json');
 
     var _zip_contents = [];
     var _zip_location;
-	var _temporary_directory = app.getPath('temp') + "ImageCompressionApp";
+	var _temporary_directory = app.getPath('temp') + config.appBundleID;
 
 	let aboutWindow
 
@@ -88,18 +85,28 @@
 		var savePath = _temporary_directory + '/' + file.name;
 		file.compressedPath = savePath;
 
-        imagemin([file.path], {
-		    plugins: [
-		        imageminJpegtran({max: 80}),
-		        imageminGifsicle({optimizationLevel: 3, interlaced: true}),
-		        imageminPngquant({quality: '65-80', speed: 1, }),
-				imageminSvgo()
-		    ]
-		}).then((buffer) => {
-			fs.writeFile(savePath, buffer[0].data, (err) => {
-            	if (err) throw err;
-				cb(null, file);
-            });
+		var fatPath = savePath + '-fat';
+
+		var filebuf = fs.readFileSync(file.path);
+
+		fs.copy(file.path, fatPath, function (err) {
+			if (err) return console.error(err);
+			console.log("File Copied!");
+
+			imagemin([fatPath], {
+			    plugins: [
+			        imageminJpegtran({max: 80}),
+			        imageminGifsicle({optimizationLevel: 3, interlaced: true}),
+			        imageminPngquant({quality: '65-80', speed: 1, }),
+					imageminSvgo()
+			    ]
+			}).then((buffer) => {
+				fs.writeFile(savePath, buffer[0].data, (err) => {
+	            	if (err) throw err;
+					cb(null, file);
+	            });
+			});
+
 		});
     }
 
